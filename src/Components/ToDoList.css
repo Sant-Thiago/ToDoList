@@ -8,6 +8,7 @@
 body {
     background-color: #140d2b;
     font-family: "Dancing Script", cursive;
+    margin-bottom: 50px;
 }
 
 h1 {
@@ -97,7 +98,7 @@ button.del {
     margin: auto;
     margin-top: 40px;
 
-    width: 730px;
+    width: 100%;
 }
 
 .options button {

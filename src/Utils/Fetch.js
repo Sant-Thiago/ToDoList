@@ -1,17 +1,27 @@
-export const getTasks = async () => {
-    return await fetch("http://127.0.0.1:5000/get_all_tasks", {
-        method: "GET",
+export const createTask = async (data) => {
+    return await fetch("http://127.0.0.1:5000/create_task", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }).then(response => {
+        return response.json();
+    }).catch(error => {
+        console.log("[ERRO] Não foi possível realizar a operação (createTask) \n\nerror:: "+ error);
+    });
+}
+
+export const deleteDoneTasks = async () => {
+    return await fetch(`http://127.0.0.1:5000/delete_all_done_tasks`, {
+        method: "DELETE",
         headers: {
             "Content-Type": "application/json"
         }
     }).then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            return [];
-        }
+        return response.json();
     }).catch(error => {
-        console.log("[ERRO] Não foi possível realizar a operação (getTask) \n\nerror:: "+ error);
+        console.log("[ERRO] Não foi possível realizar a operação (deleteDoneTasks) \n\nerror:: "+ error);
     });
 }
 
@@ -29,6 +39,57 @@ export const deleteTask = async (data) => {
     });
 }
 
+export const getAllTasks = async () => {
+    return await fetch("http://127.0.0.1:5000/get_all_tasks", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            return [];
+        }
+    }).catch(error => {
+        console.log("[ERRO] Não foi possível realizar a operação (getAllTasks) \n\nerror:: "+ error);
+    });
+}
+
+export const getDoneTasks = async () => {
+    return await fetch("http://127.0.0.1:5000/get_all_done_tasks", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            return [];
+        }
+    }).catch(error => {
+        console.log("[ERRO] Não foi possível realizar a operação (getDoneTasks) \n\nerror:: "+ error);
+    });
+}
+
+export const getTasks = async () => {
+    return await fetch("http://127.0.0.1:5000/get_all_not_done_tasks", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            return [];
+        }
+    }).catch(error => {
+        console.log("[ERRO] Não foi possível realizar a operação (getTask) \n\nerror:: "+ error);
+    });
+}
+
 export const updateTasks = async (data) => {
     return await fetch("http://127.0.0.1:5000/update_task", {
         method: "PUT",
@@ -40,19 +101,5 @@ export const updateTasks = async (data) => {
         return response.json();
     }).catch(error => {
         console.log("[ERRO] Não foi possível realizar a operação (updateTask) \n\nerror:: "+ error);
-    });
-}
-
-export const createTask = async (data) => {
-    return await fetch("http://127.0.0.1:5000/create_task", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    }).then(response => {
-        return response.json();
-    }).catch(error => {
-        console.log("[ERRO] Não foi possível realizar a operação (createTask) \n\nerror:: "+ error);
     });
 }
