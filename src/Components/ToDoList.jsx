@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './ToDoList.css';
 import FormInput from "./FormInput";
+import { getTasks, updateTasks } from "../Utils/Fetch";
 import Item from "./Item";
 import NoList from "./NoList";
 
@@ -9,6 +10,11 @@ function ToDoList() {
     const [lista, setLista] = useState([]);
     const [listaDel, setListaDel] = useState([]);
     const [novoItem, setNovoItem] = useState("");
+
+    const obterTasks = async () => {
+        const tasks = await getTasks();
+        setLista(tasks);
+    }
 
     function adicionaItem(form) {
         form.preventDefault();
@@ -19,10 +25,14 @@ function ToDoList() {
         } 
     }
 
-    function completar(index) {   
+    const completar = async (idx) => {   
         const listaAux = [...lista];
-        listaAux[index].isCompleted = !listaAux[index].isCompleted;
-        setLista(listaAux);
+        const index = listaAux.findIndex(item => item.id == idx);
+        const item = listaAux[index];
+        item.done = !item.done == 1
+        const response = await updateTasks(item);
+        alert(response.message)
+        obterTasks();
     }
 
     function deletar(index) {
@@ -37,6 +47,10 @@ function ToDoList() {
         setLista([]);
     }
 
+    useEffect(() => {
+        obterTasks();
+    }, []);
+
     return (
         <div>
             <h1>Lista de Tarefas</h1>
@@ -47,14 +61,14 @@ function ToDoList() {
             />
             <div className="listaTarefas" id="listaTarefasId">
                 {
-                    lista.length < 1 ? <NoList /> : lista.map((item, index) => ( 
+                    lista.length < 1 ? <NoList /> : lista.map(item => ( 
                         <Item 
-                            key={index}                            
-                            valor={item.text} 
-                            style={item.isCompleted ? "item completo" : "item"}
-                            completar={() => completar(index)}  
-                            deletar={() => deletar(index)}  
-                            editar={() => editar(index)}  
+                            key={item.id}                            
+                            valor={item.title} 
+                            style={item.done == 1 ? "item completo" : "item"}
+                            completar={() => completar(item.id)}  
+                            deletar={() => deletar(item.id)}  
+                            editar={() => editar(item.id)}  
                         />     
                     ))
                 }
