@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playwrite+MX:wght@100..400&display=swap');
+
+* {
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #140d2b;
+    font-family: "Dancing Script", cursive;
+}
+
+h1 {
+    font-weight: 900;
+    color: #9e5aac;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    position: relative;
+
+    width: 600px;
+    height: 40px;
+        
+    margin: 30px auto;
+    margin-bottom: 60px;
+}
+
+input {
+    display: flex;
+
+    width: calc(100% - 60px);
+    height: 40px;
+
+    background: #352957;
+    color: white;
+
+    border: none;
+    border-top-left-radius: 17px;
+    border-bottom-left-radius: 17px;
+
+    padding-left: 30px;
+    
+    font-size: 16px;
+}
+
+button {
+    font-weight: 700;
+    border: none;
+}
+
+button.add {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 60px;
+    height: 40px;
+
+    background: #352957;
+    color: white;
+
+    cursor: pointer;
+
+    border-top-right-radius: 17px;
+    border-bottom-right-radius: 17px;
+
+    transition: all .5s ease;
+}
+
+button.add:hover {
+    background: #6e5c9f;
+}
+
+.listaTarefas {
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap;
+
+    width: 750px;
+
+    margin: auto;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+
+    background: #220d3a;
+
+    border: 1px solid #9e5aac;
+    border-radius: 10px;
+    
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition: all .3s ease-in;
+}
+
+.item:hover {
+    background: #9e5aac;
+}
+
+.item:hover button.del {
+    color: white;
+}
+
+.item span {
+    width: 100%;
+
+    color: white;
+    
+    font-size: 20px;
+    font-weight: 900;
+    
+    margin-right: 10px;
+    
+    padding: 12px 25px;
+}
+
+.item.completo {
+    background: #1e0928;
+    border: 1px solid #38306d;
+}
+
+.item.completo:hover {
+    background: #38306d;
+}
+
+.item.completo span {
+    color: #6e5c9f;
+    text-decoration: line-through;
+
+    transition: all .5s ease-in;
+}
+
+.item.completo span:hover {
+    color: #9e5aac;
+    text-decoration: none;
+}
+
+button.del {
+    background: linear-gradient(90deg, transparent, #352957);
+    color: #9e5aac;
+
+    cursor: pointer;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+
+    margin: auto;
+    margin-top: 40px;
+
+    width: 730px;
+}
+
+.options button {
+    padding: 10px 15px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.options button {
+    background: #220d3a;
+
+    border: 1px solid #9e5aac;
+
+    color: #9e5aac;
+
+    transition: all .26s ease-in;
+}
+
+.options button:hover {
+    background: #9e5aac;
+
+    border: 1px solid #220d3a;
+
+    color: #220d3a;
+}
+
+.no-list {
+    display: flex;
+    flex-flow: column wrap;
+
+    align-items: center;
+}
+
+.sort-icon {
+    margin: auto;
+    margin-top: 20px;
+    
+    font-size: 200px;
+}
+
+.message-list {
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+
+@media screen and (max-width: 900px) {
+    form {
+        width: 80%;
+    }
+
+    .listaTarefas {
+        width: 90%;
+    }
+}
