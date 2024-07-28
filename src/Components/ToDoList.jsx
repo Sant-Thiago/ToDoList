@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './ToDoList.css';
 import FormInput from "./FormInput";
-import { getTasks, updateTasks } from "../Utils/Fetch";
+import { getTasks, updateTasks, createTask, deleteTask } from "../Utils/Fetch";
 import Item from "./Item";
 import NoList from "./NoList";
 
@@ -16,30 +16,35 @@ function ToDoList() {
         setLista(tasks);
     }
 
-    function adicionaItem(form) {
-        form.preventDefault();
+    const adicionaItem = async (event) => {
+        event.preventDefault();
         if (novoItem) {
-            setLista([...lista, { text: novoItem, isCompleted: false }]);
+            const item = {
+                title: novoItem, 
+                done: false
+            };
             setNovoItem("");
             document.getElementById('input-entrada').focus();
+            const response = await createTask(item);
+            alert(response.message);
+            obterTasks();
         } 
     }
 
     const completar = async (idx) => {   
-        const listaAux = [...lista];
-        const index = listaAux.findIndex(item => item.id == idx);
-        const item = listaAux[index];
+        const index = lista.findIndex(item => item.id == idx);
+        const item = lista[index];
         item.done = !item.done == 1
         const response = await updateTasks(item);
-        alert(response.message)
+        // alert(response.message)
         obterTasks();
     }
 
-    function deletar(index) {
-        const listaAux = [...lista];
-        listaAux.splice(index, 1);
-        setListaDel([...listaDel, ...listaAux]);
-        setLista(listaAux);
+    const deletar = async (idx) => {
+        const item = lista.find(item => item.id == idx);
+        const response = await deleteTask(item);
+        // alert(response.message)
+        obterTasks();
     }
 
     function deleteAll() {
