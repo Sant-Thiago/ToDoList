@@ -4,6 +4,7 @@ import FormInput from "./FormInput";
 import { createTask, deleteDoneTasks, deleteTask, getAllTasks,  getDoneTasks, getTasks, updateTasks } from "../Utils/Fetch";
 import Item from "./Item";
 import NoList from "./NoList";
+import Cursor from "./Cursor";
 
 function ToDoList() {
     
@@ -91,8 +92,10 @@ function ToDoList() {
         obterAllTasks();
     }, []);
 
+    
+
     return (
-        <div>
+        <>
             <h1>Lista de Tarefas</h1>
             <FormInput 
                 valor={novoItem} 
@@ -115,9 +118,10 @@ function ToDoList() {
             </div>
             <div className="options">
                 <button onClick={() => trocarView( type[0] )}>{ type[0] }</button>
-                <button onClick={() => deletarAll()}>Deletar todos</button>
+                <button onClick={() => deletarAll()}>Deletar Concluidos</button>
             </div>
-        </div>
+            <Cursor />
+        </>
     )
 }
 

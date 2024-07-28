@@ -11,7 +11,15 @@ body {
     margin-bottom: 50px;
 }
 
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+}
+
 h1 {
+    width: fit-content;
     font-weight: 900;
     color: #9e5aac;
     text-align: center;
@@ -25,7 +33,6 @@ form {
     height: 40px;
         
     margin: 30px auto;
-    margin-bottom: 60px;
 }
 
 input {
@@ -99,6 +106,7 @@ button.del {
     margin-top: 40px;
 
     width: 100%;
+    max-width: 800px;
 }
 
 .options button {

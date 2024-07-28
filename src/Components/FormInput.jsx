@@ -2,7 +2,7 @@ import React from "react";
 
 function FormInput({valor, setValor, adicionaItem}) {    
     return (
-        <div>
+        <>
             <form id="formId" onSubmit={adicionaItem}>
                 <input 
                     type="text" 
@@ -15,7 +15,7 @@ function FormInput({valor, setValor, adicionaItem}) {
                     className="add">Add
                 </button>
             </form>
-        </div>
+        </>
     )
 }
 
