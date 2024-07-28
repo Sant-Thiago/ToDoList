@@ -13,6 +13,7 @@ function Cursor() {
         console.log(e)
 
         if (cursor.current) {
+            cursor.current.style.display ="block";
             cursor.current.style.top = y + "px";
             cursor.current.style.left = x + "px";
         }
@@ -20,11 +21,12 @@ function Cursor() {
     };
 
     const outCursor = () => {
-        cursor.current.display = "none"
+        if (cursor.current) {
+            cursor.current.style.display = "none"
+        }
     }
 
     useEffect(() => {
-
         root.addEventListener("mousemove", moveCursor);
         root.addEventListener("mouseout", outCursor)
 
