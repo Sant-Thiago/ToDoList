@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import './ToDoList.css';
-import FormInput from "./Utils/FormInput";
-import Item from "./Utils/Item";
-import NoList from "./Utils/NoList";
+import FormInput from "./FormInput";
+import Item from "./Item";
+import NoList from "./NoList";
 
 function ToDoList() {
     
@@ -19,10 +19,7 @@ function ToDoList() {
         } 
     }
 
-    function completar(index, e) {   
-
-        console.log(index)
-        console.log(e)
+    function completar(index) {   
         const listaAux = [...lista];
         listaAux[index].isCompleted = !listaAux[index].isCompleted;
         setLista(listaAux);
@@ -52,14 +49,12 @@ function ToDoList() {
                 {
                     lista.length < 1 ? <NoList /> : lista.map((item, index) => ( 
                         <Item 
-                            key={index}
-                            body={item}
-                            idx={index}
-                            
+                            key={index}                            
                             valor={item.text} 
                             style={item.isCompleted ? "item completo" : "item"}
-                            completar={(e) => completar(index, e)}  
+                            completar={() => completar(index)}  
                             deletar={() => deletar(index)}  
+                            editar={() => editar(index)}  
                         />     
                     ))
                 }

@@ -1,3 +1,5 @@
+import React from "react";
+
 function FormInput({valor, setValor, adicionaItem}) {    
     return (
         <div>

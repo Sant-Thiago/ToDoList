@@ -83,65 +83,6 @@ button.add:hover {
     margin: auto;
 }
 
-.item {
-    display: flex;
-    justify-content: space-between;
-
-    background: #220d3a;
-
-    border: 1px solid #9e5aac;
-    border-radius: 10px;
-    
-    margin-bottom: 10px;
-    cursor: pointer;
-
-    overflow: hidden;
-
-    transition: all .3s ease-in;
-}
-
-.item:hover {
-    background: #9e5aac;
-}
-
-.item:hover button.del {
-    color: white;
-}
-
-.item span {
-    width: 100%;
-
-    color: white;
-    
-    font-size: 20px;
-    font-weight: 900;
-    
-    margin-right: 10px;
-    
-    padding: 12px 25px;
-}
-
-.item.completo {
-    background: #1e0928;
-    border: 1px solid #38306d;
-}
-
-.item.completo:hover {
-    background: #38306d;
-}
-
-.item.completo span {
-    color: #6e5c9f;
-    text-decoration: line-through;
-
-    transition: all .5s ease-in;
-}
-
-.item.completo span:hover {
-    color: #9e5aac;
-    text-decoration: none;
-}
-
 button.del {
     background: linear-gradient(90deg, transparent, #352957);
     color: #9e5aac;
