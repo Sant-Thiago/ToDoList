@@ -1,8 +1,8 @@
 .containerCursor {
     display: none;
 
-    width: 10px;
-    height: 10px;
+    width: 30px;
+    height: 30px;
 
     position: fixed;
 
@@ -12,7 +12,8 @@
 
     background-color: #9e5aac;
     
-    box-shadow: 0 0 20px 15px #9e5aac;
+    box-shadow: 0 0 10px 5px #9e5aac,
+                0 0 30px 25px #9e5aac;
 
     transform: translate(-50%, -50%);
 }

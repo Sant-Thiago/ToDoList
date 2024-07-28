@@ -10,14 +10,13 @@ function Cursor() {
         let x = e.pageX;
         let y = e.pageY;
 
-        console.log(e)
-
-        if (cursor.current) {
-            cursor.current.style.display ="block";
-            cursor.current.style.top = y + "px";
-            cursor.current.style.left = x + "px";
+        if (e.target.id == "root") {
+            if (cursor.current) {
+                cursor.current.style.display ="block";
+                cursor.current.style.top = y + "px";
+                cursor.current.style.left = x + "px";
+            }
         }
-
     };
 
     const outCursor = () => {
