@@ -25,6 +25,8 @@ h1 {
     font-weight: 900;
     color: #9e5aac;
     text-align: center;
+
+    cursor: auto;
 }
 
 form {
